@@ -1,16 +1,30 @@
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { useContextMob } from "..";
+import { Path } from "../config/path";
 
 export const NavBar = () => {
+  const { user } = useContextMob();
+  const handleLogout = () => user.setIsAuth(false);
   return (
-    <Navbar bg="dark" variant="dark" style={{ color: "white" }}>
+    <Navbar bg="dark" variant="dark">
       <Container>
-        <Nav.Link href="#home" className="blue">
+        <Link to={Path.HOME} className="text-white text-decoration-none">
           Auth App
-        </Nav.Link>
-        <Nav className="ml-auto">
-          <Button variant="outline-light">Login</Button>
-          <Button variant="outline-light">Registration</Button>
-        </Nav>
+        </Link>
+        {!user.isAuth ? (
+          <Nav className="ml-auto gap-2" style={{ color: "white" }}>
+            <Button variant="outline-light">Sign in</Button>
+            <Button variant="outline-light">Sign up</Button>
+          </Nav>
+        ) : (
+          <Nav className="ml-auto gap-2" style={{ color: "white" }}>
+            <Button variant="outline-light">Admin Panel</Button>
+            <Button variant="outline-light" onClick={handleLogout}>
+              Logout
+            </Button>
+          </Nav>
+        )}
       </Container>
     </Navbar>
   );
