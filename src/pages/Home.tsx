@@ -1,5 +1,10 @@
-import React from "react";
+import { AdminPanel, Toolbar } from "../components";
 
 export const Home = () => {
-  return <div>Panel</div>;
+  return (
+    <div>
+      <Toolbar />
+      <AdminPanel />
+    </div>
+  );
 };

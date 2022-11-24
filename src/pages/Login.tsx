@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { ErrorMessage } from "../components/ErrorMessage";
+import { ErrorMessage } from "../components";
 import { ILoginData } from "../types/types";
 
 export const Login = () => {
