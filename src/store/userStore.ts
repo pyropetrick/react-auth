@@ -1,32 +1,51 @@
 import { makeAutoObservable } from "mobx";
 import { IUser } from "../types/types";
-
-export default class UserStore {
-  private _isAuth: boolean;
-  private _user: {};
-  private _users: IUser[];
+class UserStore {
+  isAuth: boolean = false;
+  user: IUser | {} = {};
+  users: IUser[] = [
+    {
+      id: "1",
+      fullname: "Pavel Ch",
+      email: "hui",
+      dateReg: "20.20.20",
+      lastLogin: "20.20.20",
+      status: "online",
+    },
+    {
+      id: "2",
+      fullname: "Pavel Ch",
+      email: "hui",
+      dateReg: "20.20.20",
+      lastLogin: "20.20.20",
+      status: "online",
+    },
+    {
+      id: "3",
+      fullname: "Pavel Ch",
+      email: "hui",
+      dateReg: "20.20.20",
+      lastLogin: "20.20.20",
+      status: "online",
+    },
+  ];
+  usersSelect: string[] = [];
   constructor() {
-    this._isAuth = true;
-    this._user = {};
-    this._users = [];
     makeAutoObservable(this);
   }
-  setIsAuth(bool: boolean) {
-    this._isAuth = bool;
+  selectUser(id: string) {
+    this.usersSelect.push(id);
   }
-  setUser(user: IUser) {
-    this._user = user;
+  unSelectUser(id: string) {
+    this.usersSelect = this.usersSelect.filter((userId) => userId !== id);
   }
-  setUsers(users: IUser[]) {
-    this._users = users;
+  setAuth(bool: boolean) {
+    this.isAuth = bool;
   }
-  get isAuth() {
-    return this._isAuth;
-  }
-  get user() {
-    return this._user;
-  }
-  get users() {
-    return this._users;
+
+  get auth() {
+    return this.isAuth;
   }
 }
+
+export default new UserStore();

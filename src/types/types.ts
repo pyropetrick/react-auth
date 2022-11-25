@@ -1,9 +1,12 @@
-import UserStore from "../store/userStore";
-
-export interface IUser {}
-export interface IUserStore {
-  user: UserStore;
+export interface IUser {
+  id: string;
+  fullname?: string;
+  email: string;
+  dateReg: string;
+  lastLogin: string;
+  status: string;
 }
+
 export interface ILoginData {
   username: string;
   password: string;

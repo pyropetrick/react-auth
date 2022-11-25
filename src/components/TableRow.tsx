@@ -1,12 +1,5 @@
 import React, { ChangeEvent } from "react";
-interface IUser {
-  id: string;
-  fullname: string;
-  email: string;
-  dateReg: string;
-  lastLogin: string;
-  status: string;
-}
+import { IUser } from "../types/types";
 
 interface IProps {
   user: IUser;

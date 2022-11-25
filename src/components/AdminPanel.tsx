@@ -1,22 +1,14 @@
-import React, { useState } from "react";
+import { observer } from "mobx-react-lite";
+import { ChangeEvent } from "react";
 import { Table } from "react-bootstrap";
 import { TableRow } from ".";
+import userStore from "../store/userStore";
 
-export const AdminPanel = () => {
-  const [usersSelect, setUserSelect] = useState();
-  const users = [
-    {
-      id: "1",
-      fullname: "Pavel Ch",
-      email: "hui",
-      dateReg: "20.20.20",
-      lastLogin: "20.20.20",
-      status: "online",
-    },
-  ];
-  const handleUser = (event: any) => {
-    console.log(event.target.value);
-    console.log(event.target.checked);
+export const AdminPanel = observer(() => {
+  const handleUser = (event: ChangeEvent<HTMLInputElement>) => {
+    event.target.checked
+      ? userStore.selectUser(event.target.value)
+      : userStore.unSelectUser(event.target.value);
   };
 
   return (
@@ -33,10 +25,10 @@ export const AdminPanel = () => {
         </tr>
       </thead>
       <tbody>
-        {users.map((user) => (
+        {userStore.users.map((user) => (
           <TableRow user={user} key={user.id} setUser={handleUser} />
         ))}
       </tbody>
     </Table>
   );
-};
+});
