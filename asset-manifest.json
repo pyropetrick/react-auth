@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/auth/static/css/main.c2cab247.css",
-    "main.js": "/auth/static/js/main.ad32fe8d.js",
-    "index.html": "/auth/index.html",
-    "main.c2cab247.css.map": "/auth/static/css/main.c2cab247.css.map",
-    "main.ad32fe8d.js.map": "/auth/static/js/main.ad32fe8d.js.map"
+    "main.css": "/react-auth/static/css/main.c2cab247.css",
+    "main.js": "/react-auth/static/js/main.ad32fe8d.js",
+    "index.html": "/react-auth/index.html",
+    "main.c2cab247.css.map": "/react-auth/static/css/main.c2cab247.css.map",
+    "main.ad32fe8d.js.map": "/react-auth/static/js/main.ad32fe8d.js.map"
   },
   "entrypoints": [
     "static/css/main.c2cab247.css",
