@@ -25,16 +25,12 @@ export const NavBar = observer(() => {
         </NavLink>
         {!isAuthificate ? (
           <Nav className="ml-auto gap-2" style={{ color: "white" }}>
-            <Button variant="outline-light">
-              <NavLink to={Path.LOGIN} className="text-white text-decoration-none">
-                Sign in
-              </NavLink>
-            </Button>
-            <Button variant="outline-light">
-              <NavLink to={Path.REGISTRATION} className="text-white text-decoration-none">
-                Sign up
-              </NavLink>
-            </Button>
+            <NavLink to={Path.LOGIN} className="text-white text-decoration-none">
+              <Button variant="outline-light">Sign in</Button>
+            </NavLink>
+            <NavLink to={Path.REGISTRATION} className="text-white text-decoration-none">
+              <Button variant="outline-light">Sign up</Button>
+            </NavLink>
           </Nav>
         ) : (
           <Nav className="ml-auto gap-2" style={{ color: "white" }}>

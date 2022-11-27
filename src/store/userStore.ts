@@ -56,9 +56,9 @@ class UserStore {
     yield axios
       .put(`${url}user/block`, { usersId })
       .then((res) => {
-        const usersBlocked: IUserApi[] = res.data.users;
-        const idxs: number[] = usersBlocked.map((user) => findUserIdx(user.id, this.users));
+        const idxs: number[] = usersId.map((id) => findUserIdx(id, this.users));
         idxs.forEach((idx: number) => (this.users[idx].status = "blocked"));
+        console.log(idxs);
         this.users = this.users.map((user) => user);
       })
       .catch((e) => console.log(e));
@@ -67,8 +67,7 @@ class UserStore {
     yield axios
       .put(`${url}user/unblock`, { usersId })
       .then((res) => {
-        const usersBlocked: IUserApi[] = res.data.users;
-        const idxs: number[] = usersBlocked.map((user) => findUserIdx(user.id, this.users));
+        const idxs: number[] = usersId.map((id) => findUserIdx(id, this.users));
         idxs.forEach((idx: number) => (this.users[idx].status = "offline"));
         this.users = this.users.map((user) => user);
       })

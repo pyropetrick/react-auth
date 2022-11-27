@@ -1,6 +1,5 @@
 export enum Path {
-  LOGIN = "/login",
-  REGISTRATION = "/registration",
-  HOME = "/",
-  ADMIN = "/admin",
+  LOGIN = "/react-auth/login",
+  REGISTRATION = "/react-auth/registration",
+  HOME = "/react-auth/",
 }
