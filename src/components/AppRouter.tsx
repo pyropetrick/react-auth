@@ -12,6 +12,7 @@ export const AppRouter = observer(() => {
   const navigate = useNavigate();
   useEffect(() => {
     isAuthificate ? navigate(Path.HOME) : navigate(Path.LOGIN);
+    // eslint-disable-next-line
   }, [isAuthificate]);
   const [loading, setLoading] = useState<boolean>(false);
   useEffect(() => {
