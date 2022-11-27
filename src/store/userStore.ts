@@ -4,7 +4,7 @@ import { IDataApi, IUser, IUserApi } from "../types/types";
 import jwt_decode from "jwt-decode";
 
 const regX = new RegExp(/[TZ]/g);
-const url = "https://react-auth-server-production.up.railway.app/";
+const url = "https://react-auth-server-production.up.railway.app/api";
 
 const findUserIdx = (id: string, users: IUser[]): number =>
   users.findIndex((user) => id === user.id);
