@@ -80,8 +80,12 @@ class UserStore {
       .then((res) => {
         const token: any = localStorage.getItem("token");
         const tokenDecode: any = jwt_decode(token);
-        usersId.forEach((id) => tokenDecode.id === id && this.setAuth(false));
-        alert(res.data.message);
+        usersId.forEach((id) => {
+          if (tokenDecode.id === id) {
+            this.setAuth(false);
+            alert(res.data.message);
+          }
+        });
       })
       .catch((e) => console.log(e));
   }
