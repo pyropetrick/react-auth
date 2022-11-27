@@ -23,7 +23,7 @@ export interface IUserApi {
   name: string | null;
   lastname: string | null;
   email: string;
-  dateregistration: string;
+  datereg: string;
   lastlogin: string;
   status: string;
 }

@@ -33,16 +33,14 @@ class UserStore {
   }
   setUsers(data: IDataApi) {
     const { users } = data;
-    this.users = users.map(
-      ({ id, name, lastname, dateregistration, lastlogin, email, status }) => ({
-        id,
-        fullname: `${name ? name : ""} ${lastname ? lastname : ""}`,
-        lastLogin: lastlogin.replaceAll(regX, " "),
-        dateReg: dateregistration.replaceAll(regX, " "),
-        email,
-        status,
-      }),
-    );
+    this.users = users.map(({ id, name, lastname, datereg, lastlogin, email, status }) => ({
+      id,
+      fullname: `${name ? name : ""} ${lastname ? lastname : ""}`,
+      lastLogin: lastlogin.replaceAll(regX, " "),
+      dateReg: datereg.replaceAll(regX, " "),
+      email,
+      status,
+    }));
   }
   *deleteUser(usersId: string[]) {
     yield axios
