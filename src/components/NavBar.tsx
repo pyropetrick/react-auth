@@ -11,7 +11,7 @@ export const NavBar = observer(() => {
     try {
       const token = localStorage.getItem("token");
       const tokenDecode: any = jwt_decode(token as string);
-      await logoutUser(tokenDecode.id);
+      await logoutUser([tokenDecode.id]);
       localStorage.removeItem("token");
     } catch (e) {
       console.log(e);
