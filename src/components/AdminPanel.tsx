@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { TableRow } from ".";
 import userStore from "../store/userStore";
@@ -10,6 +10,9 @@ export const AdminPanel = observer(() => {
       ? userStore.selectUser(event.target.value)
       : userStore.unSelectUser(event.target.value);
   };
+  useEffect(() => {
+    userStore.getUsers();
+  }, []);
 
   return (
     <Table striped bordered className="w-75 mx-auto">

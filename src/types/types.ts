@@ -18,3 +18,15 @@ export interface IRegistrationData {
   lastname: string;
   email: string;
 }
+export interface IUserApi {
+  id: string;
+  name: string | null;
+  lastname: string | null;
+  email: string;
+  dateregistration: string;
+  lastlogin: string;
+  status: string;
+}
+export interface IDataApi {
+  users: IUserApi[];
+}

@@ -1,6 +1,8 @@
 import { Button } from "react-bootstrap";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ErrorMessage } from "../components";
+import { auth, login } from "../http/userApi";
+import userStore from "../store/userStore";
 import { ILoginData } from "../types/types";
 
 export const Login = () => {
@@ -10,8 +12,16 @@ export const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<ILoginData>({ mode: "onChange" });
-  const submitForm: SubmitHandler<ILoginData> = ({ username, password }) => {
-    console.log(username, password);
+  const submitForm: SubmitHandler<ILoginData> = async (loginData) => {
+    try {
+      await login(loginData);
+      const token = await auth();
+      if (token) {
+        userStore.setAuth(true);
+      }
+    } catch (e: any) {
+      alert(e.response.data.message);
+    }
     reset();
   };
   return (
@@ -30,7 +40,7 @@ export const Login = () => {
           id="username"
           {...register("username", {
             required: "Username is required",
-            minLength: { value: 5, message: "Minimum characters 5" },
+            minLength: { value: 2, message: "Minimum characters 2" },
           })}
         />
         {errors.username && <ErrorMessage message={errors.username.message} />}
@@ -44,7 +54,7 @@ export const Login = () => {
           id="password"
           {...register("password", {
             required: "Password is required",
-            minLength: { value: 6, message: "Minimum characters 6" },
+            minLength: { value: 1, message: "Minimum characters 1" },
           })}
         />
         {errors.password && <ErrorMessage message={errors.password.message} />}
