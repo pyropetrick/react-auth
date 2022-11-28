@@ -45,11 +45,9 @@ class UserStore {
   *deleteUser(usersId: string[]) {
     yield axios
       .delete(`${url}user/delete`, { params: { usersId } })
-      .then((res) => {
-        const idxs: number[] = usersId.map((id) => findUserIdx(id, this.users));
-        idxs.forEach((idx: number) => this.users.splice(idx));
-        this.users = this.users.map((user) => user);
-      })
+      .then((res) =>
+        usersId.forEach((id) => (this.users = this.users.filter((user) => id !== user.id))),
+      )
       .catch((e) => alert(e.response.data.message));
   }
   *blockUser(usersId: string[]) {
