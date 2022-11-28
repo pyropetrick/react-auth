@@ -5,18 +5,18 @@ import { Icon } from "./Icon";
 export const Toolbar = observer(() => {
   const { usersSelect, deleteUser, blockUser, unBlockUser, logoutUser } = userStore;
   const getColor = (color: string) => (usersSelect.length ? color : "grey");
-  const handleLock = async () => {
+  const handleLock = () => {
     if (usersSelect.length) {
       blockUser(usersSelect);
       logoutUser(usersSelect);
     }
   };
-  const handleUnlock = async () => {
+  const handleUnlock = () => {
     if (usersSelect.length) {
       unBlockUser(usersSelect);
     }
   };
-  const handleDelete = async () => {
+  const handleDelete = () => {
     if (usersSelect.length) {
       deleteUser(usersSelect);
       logoutUser(usersSelect);
