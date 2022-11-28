@@ -11,7 +11,14 @@ export const TableRow = ({ user, setUser }: IProps) => {
   return (
     <tr>
       <td>
-        <input type="checkbox" className="form-check-input" value={id} onChange={setUser} />
+        <input
+          type="checkbox"
+          className="form-check-input"
+          value={id}
+          id="inputRow"
+          onChange={setUser}
+          name="inputRow"
+        />
       </td>
       <td>{id}</td>
       <td>{fullname}</td>

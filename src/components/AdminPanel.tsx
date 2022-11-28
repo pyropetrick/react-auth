@@ -5,20 +5,33 @@ import { TableRow } from ".";
 import userStore from "../store/userStore";
 
 export const AdminPanel = observer(() => {
+  const { selectUser, unSelectUser, getUsers } = userStore;
   const handleUser = (event: ChangeEvent<HTMLInputElement>) => {
+    event.target.checked ? selectUser(event.target.value) : unSelectUser(event.target.value);
+  };
+  const handleSelectAll = (event: ChangeEvent<HTMLInputElement>) => {
+    const inputs: NodeListOf<HTMLElement> = document.getElementsByName("inputRow");
     event.target.checked
-      ? userStore.selectUser(event.target.value)
-      : userStore.unSelectUser(event.target.value);
+      ? inputs.forEach((input: any) => {
+          selectUser(input.value);
+          input.checked = true;
+        })
+      : inputs.forEach((input: any) => {
+          unSelectUser(input.value);
+          input.checked = false;
+        });
   };
   useEffect(() => {
-    userStore.getUsers();
+    getUsers();
   }, []);
 
   return (
     <Table striped bordered className="w-75 mx-auto">
       <thead>
         <tr>
-          <th></th>
+          <th>
+            <input type="checkbox" onChange={handleSelectAll} />
+          </th>
           <th>id</th>
           <th>Full name</th>
           <th>Email</th>
