@@ -30,7 +30,7 @@ export const AdminPanel = observer(() => {
       <thead>
         <tr>
           <th>
-            <input type="checkbox" onChange={handleSelectAll} />
+            <input className="form-check-input" type="checkbox" onChange={handleSelectAll} />
           </th>
           <th>id</th>
           <th>Full name</th>
