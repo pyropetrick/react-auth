@@ -49,6 +49,7 @@ class UserStore {
         const idxs: number[] = usersId.map((id) => findUserIdx(id, this.users));
         idxs.forEach((idx: number) => this.users.splice(idx));
         this.users = this.users.map((user) => user);
+        this.usersSelect = [];
       })
       .catch((e) => alert(e.response.data.message));
   }
@@ -58,8 +59,8 @@ class UserStore {
       .then((res) => {
         const idxs: number[] = usersId.map((id) => findUserIdx(id, this.users));
         idxs.forEach((idx: number) => (this.users[idx].status = "blocked"));
-        console.log(idxs);
         this.users = this.users.map((user) => user);
+        this.usersSelect = [];
       })
       .catch((e) => console.log(e));
   }
@@ -70,6 +71,7 @@ class UserStore {
         const idxs: number[] = usersId.map((id) => findUserIdx(id, this.users));
         idxs.forEach((idx: number) => (this.users[idx].status = "offline"));
         this.users = this.users.map((user) => user);
+        this.usersSelect = [];
       })
       .catch((e) => console.log(e));
   }
